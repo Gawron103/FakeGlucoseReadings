@@ -3,10 +3,12 @@ package com.example.glucosereadings.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.glucosereadings.models.Cgm
-import com.example.glucosereadings.utils.SensorStates
+import com.example.glucosereadings.models.SensorType
+import com.example.glucosereadings.utils.SensorState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers.io
+import io.reactivex.subjects.BehaviorSubject
 
 class SensorRepository private constructor() {
 
@@ -16,8 +18,27 @@ class SensorRepository private constructor() {
     private val _egv = MutableLiveData<Int?>(null)
     val egv: LiveData<Int?> get() = _egv
 
-    private val _sensorState = MutableLiveData(SensorStates.NOT_PRESENT)
-    val sensorState: LiveData<SensorStates> get() = _sensorState
+    private var currentSensorType = SensorType.NONE
+
+    val sensorType = BehaviorSubject.createDefault<SensorType>(currentSensorType)
+    val sensorState = BehaviorSubject.createDefault<SensorState>(SensorState.NOT_PRESENT)
+//    val sensorEgv = BehaviorSubject.createDefault<Int?>(null)
+
+//    private val _sensorState = MutableLiveData(SensorStates.NOT_PRESENT)
+//    val sensorState: LiveData<SensorStates> get() = _sensorState
+
+    val availableSensorTypes: List<SensorType> = listOf(
+        SensorType.Libre2,
+        SensorType.G6,
+        SensorType.NONE
+    )
+
+    private val dexcomG6ValidPinEntries = listOf(
+        "1234",
+        "8888",
+        "4321"
+    )
+
 
     companion object {
         private var instance: SensorRepository? = null
@@ -30,6 +51,17 @@ class SensorRepository private constructor() {
         }
     }
 
+    fun validateDexcomG6Pin(pin: String): Boolean {
+        return dexcomG6ValidPinEntries.contains(pin)
+    }
+
+    fun setSensorType(newType: SensorType) {
+        if (newType != currentSensorType) {
+            currentSensorType = newType
+            sensorType.onNext(currentSensorType)
+        }
+    }
+
     fun addSensor() {
         if (cgm == null) {
             cgm = Cgm().also { sensor ->
@@ -38,9 +70,11 @@ class SensorRepository private constructor() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         _egv.value = it
+//                        sensorEgv.onNext(it)
                     }
             }
-            _sensorState.postValue(SensorStates.PRESENT)
+            sensorState.onNext(SensorState.PRESENT)
+//            _sensorState.postValue(SensorStates.PRESENT)
         }
     }
 
@@ -48,8 +82,9 @@ class SensorRepository private constructor() {
         if (cgm != null) {
             egvDisposable?.dispose()
             cgm = null
-            _egv.value = null
-            _sensorState.postValue(SensorStates.NOT_PRESENT)
+//            _egv.value = null
+            sensorState.onNext(SensorState.NOT_PRESENT)
+//            _sensorState.postValue(SensorStates.NOT_PRESENT)
         }
     }
 

@@ -14,7 +14,8 @@ import com.example.glucosereadings.viewmodels.SensorManagementViewModelFactory
 import com.example.glucosereadings.repositories.SensorRepository
 import com.example.glucosereadings.databinding.FragmentManageCgmBinding
 import com.example.glucosereadings.databinding.SensorAlertDialogBinding
-import com.example.glucosereadings.utils.SensorStates
+import com.example.glucosereadings.models.SensorType
+import com.example.glucosereadings.utils.SensorState
 
 class ManageCgmFragment : Fragment() {
 
@@ -35,14 +36,45 @@ class ManageCgmFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        observeSensorType()
         observeSensorState()
+
+        binding.btnManageCgmSwitchSensor.setOnClickListener {
+            findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToSwitchCgmFragment())
+        }
     }
 
     private fun observeSensorState() {
-        sensorManagementViewModel.sensorState.observe(viewLifecycleOwner) { state ->
+        sensorManagementViewModel.sensorStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
-                SensorStates.NOT_PRESENT -> { setViewToSensorNotPresented() }
-                SensorStates.PRESENT -> { setViewToSensorPresented() }
+                SensorState.NOT_PRESENT -> {
+                    setViewToSensorNotPresented()
+                }
+                SensorState.PRESENT -> {
+                    setViewToSensorPresented()
+                }
+            }
+        }
+    }
+
+    private fun observeSensorType() {
+        sensorManagementViewModel.sensorTypeLiveData.observe(viewLifecycleOwner) { type ->
+            when (type) {
+                SensorType.NONE -> {
+                    binding.tvManageCgmSensorType.text = "Sensor type: $type"
+                    binding.btnManageCgmAddCgm.isEnabled = false
+                }
+                else -> {
+                    binding.tvManageCgmSensorType.text = "Sensor type: $type"
+                    binding.btnManageCgmAddCgm.isEnabled = true
+                    binding.btnManageCgmAddCgm.setOnClickListener {
+                        if (type == SensorType.G6) {
+                            findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToAddDexcomG6CgmFragment())
+                        } else {
+                            findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToAddLibre2CgmFragment())
+                        }
+                    }
+                }
             }
         }
     }
@@ -59,9 +91,10 @@ class ManageCgmFragment : Fragment() {
     private fun setViewToSensorNotPresented() {
         binding.tvManageCgmSensorStateInfo.text = "NO SENSOR"
         binding.btnManageCgmAddCgm.setImageResource(R.drawable.ic_add)
-        binding.btnManageCgmAddCgm.setOnClickListener {
-            findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToAddCgmFragment())
-        }
+//        binding.btnManageCgmAddCgm.setOnClickListener {
+//
+//            findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToAddCgmFragment())
+//        }
     }
 
     private fun showSensorDeleteAlert() {

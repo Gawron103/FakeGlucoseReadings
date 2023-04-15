@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.glucosereadings.databinding.FragmentHomeBinding
 import com.example.glucosereadings.repositories.SensorRepository
-import com.example.glucosereadings.utils.SensorStates
+import com.example.glucosereadings.utils.SensorState
 import com.example.glucosereadings.viewmodels.SensorManagementViewModel
 import com.example.glucosereadings.viewmodels.SensorManagementViewModelFactory
 
@@ -36,10 +36,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeCgmState() {
-        sensorManagementViewModel.sensorState.observe(viewLifecycleOwner) { state ->
+        sensorManagementViewModel.sensorStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
-                SensorStates.NOT_PRESENT -> { showNoSensor() }
-                SensorStates.PRESENT -> { showSensorPresented() }
+                SensorState.NOT_PRESENT -> { showNoSensor() }
+                SensorState.PRESENT -> { showSensorPresented() }
             }
         }
     }

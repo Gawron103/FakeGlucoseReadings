@@ -11,13 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.glucosereadings.viewmodels.SensorManagementViewModel
 import com.example.glucosereadings.viewmodels.SensorManagementViewModelFactory
 import com.example.glucosereadings.repositories.SensorRepository
-import com.example.glucosereadings.databinding.FragmentAddCgmBinding
+import com.example.glucosereadings.databinding.FragmentAddLibre2CgmBinding
 import com.example.glucosereadings.databinding.SensorAlertDialogBinding
 
-class AddCgmFragment : Fragment() {
+class AddLibre2CgmFragment : Fragment() {
 
-    private var _binding: FragmentAddCgmBinding? = null
-    private val binding: FragmentAddCgmBinding get() = _binding!!
+    private var _binding: FragmentAddLibre2CgmBinding? = null
+    private val binding: FragmentAddLibre2CgmBinding get() = _binding!!
 
     private val sensorManagementViewModel by activityViewModels<SensorManagementViewModel> {
         SensorManagementViewModelFactory(SensorRepository.getInstance())
@@ -28,7 +28,7 @@ class AddCgmFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAddCgmBinding.inflate(inflater, container, false)
+        _binding = FragmentAddLibre2CgmBinding.inflate(inflater, container, false)
         return binding.root
     }
 

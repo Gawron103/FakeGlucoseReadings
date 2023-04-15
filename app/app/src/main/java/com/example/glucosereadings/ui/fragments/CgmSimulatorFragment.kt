@@ -9,7 +9,7 @@ import android.widget.SeekBar
 import androidx.fragment.app.activityViewModels
 import com.example.glucosereadings.databinding.FragmentCgmSimulatorBinding
 import com.example.glucosereadings.repositories.SensorRepository
-import com.example.glucosereadings.utils.SensorStates
+import com.example.glucosereadings.utils.SensorState
 import com.example.glucosereadings.viewmodels.SensorManagementViewModel
 import com.example.glucosereadings.viewmodels.SensorManagementViewModelFactory
 
@@ -38,10 +38,10 @@ class CgmSimulatorFragment : Fragment() {
     }
 
     private fun observeSensorState() {
-        sensorManagementViewModel.sensorState.observe(viewLifecycleOwner) { state ->
+        sensorManagementViewModel.sensorStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
-                SensorStates.NOT_PRESENT -> { hideSimulatorShowInfo() }
-                SensorStates.PRESENT -> { showSimulatorHideInfo() }
+                SensorState.NOT_PRESENT -> { hideSimulatorShowInfo() }
+                SensorState.PRESENT -> { showSimulatorHideInfo() }
             }
         }
     }

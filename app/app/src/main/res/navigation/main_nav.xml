@@ -16,8 +16,14 @@
         android:label="Manage CGM"
         tools:layout="@layout/fragment_manage_cgm">
         <action
-            android:id="@+id/action_manageCgmFragment_to_addCgmFragment"
-            app:destination="@id/addCgmFragment" />
+            android:id="@+id/action_manageCgmFragment_to_switchCgmFragment"
+            app:destination="@id/switchCgmFragment" />
+        <action
+            android:id="@+id/action_manageCgmFragment_to_addDexcomG6CgmFragment"
+            app:destination="@id/addDexcomG6CgmFragment" />
+        <action
+            android:id="@+id/action_manageCgmFragment_to_addLibre2CgmFragment"
+            app:destination="@id/addLibre2CgmFragment" />
     </fragment>
     <fragment
         android:id="@+id/cgmSimulatorFragment"
@@ -25,8 +31,18 @@
         android:label="CGM Simulator"
         tools:layout="@layout/fragment_cgm_simulator" />
     <fragment
-        android:id="@+id/addCgmFragment"
-        android:name="com.example.glucosereadings.ui.fragments.AddCgmFragment"
-        android:label="Add CGM"
-        tools:layout="@layout/fragment_add_cgm" />
+        android:id="@+id/switchCgmFragment"
+        android:name="com.example.glucosereadings.ui.fragments.SwitchCgmFragment"
+        android:label="fragment_switch_cgm"
+        tools:layout="@layout/fragment_switch_cgm" />
+    <fragment
+        android:id="@+id/addLibre2CgmFragment"
+        android:name="com.example.glucosereadings.ui.fragments.AddLibre2CgmFragment"
+        android:label="fragment_add_libre2_cgm"
+        tools:layout="@layout/fragment_add_libre2_cgm" />
+    <fragment
+        android:id="@+id/addDexcomG6CgmFragment"
+        android:name="com.example.glucosereadings.ui.fragments.AddDexcomG6CgmFragment"
+        android:label="fragment_add_dexcom_g6_cgm"
+        tools:layout="@layout/fragment_add_dexcom_g6_cgm" />
 </navigation>

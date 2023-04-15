@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit
 class Cgm {
 
     private var egvLimit = 0
+    private lateinit var type: SensorType
 
     fun getEgvObservable(): Observable<Int> {
         return Observable
@@ -19,6 +20,10 @@ class Cgm {
 
     fun setEgvLimit(newEgvLimit: Int) {
         egvLimit = newEgvLimit
+    }
+
+    fun setSensorType(type: SensorType) {
+        this.type = type
     }
 
     private fun generateRandomGlucoseValue(): Int {

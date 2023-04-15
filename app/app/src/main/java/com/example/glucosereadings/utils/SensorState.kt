@@ -1,6 +1,6 @@
 package com.example.glucosereadings.utils
 
-enum class SensorStates {
+enum class SensorState {
 
     NOT_PRESENT,
 
