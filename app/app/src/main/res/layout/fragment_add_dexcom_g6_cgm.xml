@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.AddDexcomG6CgmFragment">
+    tools:context=".presentation.add_dexcom_g6.AddDexcomG6CgmFragment">
 
     <ImageView
         android:id="@+id/iv_AddG6_SensorImg"

@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.glucosereadings.ui.fragments.HomeFragment"
+        android:name="com.example.glucosereadings.presentation.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/manageCgmFragment"
-        android:name="com.example.glucosereadings.ui.fragments.ManageCgmFragment"
+        android:name="com.example.glucosereadings.presentation.manage_cgm.ManageCgmFragment"
         android:label="Manage CGM"
         tools:layout="@layout/fragment_manage_cgm">
         <action
@@ -27,22 +27,22 @@
     </fragment>
     <fragment
         android:id="@+id/cgmSimulatorFragment"
-        android:name="com.example.glucosereadings.ui.fragments.CgmSimulatorFragment"
+        android:name="com.example.glucosereadings.presentation.cgm_simulator.CgmSimulatorFragment"
         android:label="CGM Simulator"
         tools:layout="@layout/fragment_cgm_simulator" />
     <fragment
         android:id="@+id/switchCgmFragment"
-        android:name="com.example.glucosereadings.ui.fragments.SwitchCgmFragment"
+        android:name="com.example.glucosereadings.presentation.switch_cgm.SwitchCgmFragment"
         android:label="fragment_switch_cgm"
         tools:layout="@layout/fragment_switch_cgm" />
     <fragment
         android:id="@+id/addLibre2CgmFragment"
-        android:name="com.example.glucosereadings.ui.fragments.AddLibre2CgmFragment"
+        android:name="com.example.glucosereadings.presentation.add_libre_2.AddLibre2CgmFragment"
         android:label="fragment_add_libre2_cgm"
         tools:layout="@layout/fragment_add_libre2_cgm" />
     <fragment
         android:id="@+id/addDexcomG6CgmFragment"
-        android:name="com.example.glucosereadings.ui.fragments.AddDexcomG6CgmFragment"
+        android:name="com.example.glucosereadings.presentation.add_dexcom_g6.AddDexcomG6CgmFragment"
         android:label="fragment_add_dexcom_g6_cgm"
         tools:layout="@layout/fragment_add_dexcom_g6_cgm" />
 </navigation>

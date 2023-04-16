@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.AddLibre2CgmFragment">
+    tools:context=".presentation.add_libre_2.AddLibre2CgmFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
