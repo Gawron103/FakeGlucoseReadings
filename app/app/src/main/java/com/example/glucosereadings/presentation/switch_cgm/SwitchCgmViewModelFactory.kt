@@ -2,7 +2,6 @@ package com.example.glucosereadings.presentation.switch_cgm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.glucosereadings.data.repository.SensorRepository
 import com.example.glucosereadings.domain.use_case.GetAvailableSensorTypesUseCase
 import com.example.glucosereadings.domain.use_case.GetSensorTypeUseCase
 import com.example.glucosereadings.domain.use_case.SetSensorTypeUseCase

@@ -13,7 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.glucosereadings.databinding.FragmentAddDexcomG6CgmBinding
 import com.example.glucosereadings.databinding.SensorAlertDialogBinding
-import com.example.glucosereadings.data.repository.SensorRepository
 import com.example.glucosereadings.domain.use_case.AddSensorUseCase
 import com.example.glucosereadings.domain.use_case.ValidateG6PinUseCase
 
@@ -26,10 +25,6 @@ class AddDexcomG6CgmFragment : Fragment() {
             AddSensorUseCase(),
             ValidateG6PinUseCase()
         )
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(

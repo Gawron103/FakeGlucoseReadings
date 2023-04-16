@@ -8,13 +8,12 @@ class GetSensorInfoUseCase(
     private val getSensorTypeUseCase: GetSensorTypeUseCase
 ) {
 
-    operator fun invoke() =
+    operator fun invoke(): Observable<ManageCGMUiState> =
         Observable.zip(
             getSensorStateUseCase(),
             getSensorTypeUseCase(),
-            { state, type ->
-                ManageCGMUiState(state, type)
-            }
-        )
+        ) { state, type ->
+            ManageCGMUiState(state, type)
+        }
 
 }

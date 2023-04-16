@@ -1,7 +1,6 @@
 package com.example.glucosereadings.presentation.add_dexcom_g6
 
 import androidx.lifecycle.ViewModel
-import com.example.glucosereadings.data.repository.SensorRepository
 import com.example.glucosereadings.domain.use_case.AddSensorUseCase
 import com.example.glucosereadings.domain.use_case.ValidateG6PinUseCase
 

@@ -1,9 +1,10 @@
 package com.example.glucosereadings.domain.use_case
 
-import com.example.glucosereadings.data.repository.SensorRepository
+import com.example.glucosereadings.data.repository.SensorRepositoryImpl
+import com.example.glucosereadings.domain.repository.SensorRepository
 
 class SetSensorEgvLimitUseCase(
-    private val repository: SensorRepository = SensorRepository.getInstance()
+    private val repository: SensorRepository = SensorRepositoryImpl.getInstance()
 ) {
 
     operator fun invoke(limit: Int) = repository.setSensorLimit(limit)

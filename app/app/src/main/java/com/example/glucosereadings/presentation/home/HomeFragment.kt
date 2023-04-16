@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.glucosereadings.databinding.FragmentHomeBinding
 import com.example.glucosereadings.domain.use_case.*
-import com.example.glucosereadings.data.model.SensorState
 
 class HomeFragment : Fragment() {
 

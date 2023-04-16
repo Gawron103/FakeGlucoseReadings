@@ -57,17 +57,21 @@ class ManageCgmFragment : Fragment() {
                 binding.tvManageCgmSensorStateInfo.text = "NO SENSOR"
                 binding.btnManageCgmAddCgm.setImageResource(R.drawable.ic_add)
 
-                if (state.sensorType == SensorType.NONE) {
-                    binding.btnManageCgmAddCgm.isEnabled = false
-                } else if (state.sensorType == SensorType.Libre2) {
-                    binding.btnManageCgmAddCgm.isEnabled = true
-                    binding.btnManageCgmAddCgm.setOnClickListener {
-                        findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToAddLibre2CgmFragment())
+                when (state.sensorType) {
+                    SensorType.NONE -> {
+                        binding.btnManageCgmAddCgm.isEnabled = false
                     }
-                } else {
-                    binding.btnManageCgmAddCgm.isEnabled = true
-                    binding.btnManageCgmAddCgm.setOnClickListener {
-                        findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToAddDexcomG6CgmFragment())
+                    SensorType.Libre2 -> {
+                        binding.btnManageCgmAddCgm.isEnabled = true
+                        binding.btnManageCgmAddCgm.setOnClickListener {
+                            findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToAddLibre2CgmFragment())
+                        }
+                    }
+                    SensorType.G6 -> {
+                        binding.btnManageCgmAddCgm.isEnabled = true
+                        binding.btnManageCgmAddCgm.setOnClickListener {
+                            findNavController().navigate(ManageCgmFragmentDirections.actionManageCgmFragmentToAddDexcomG6CgmFragment())
+                        }
                     }
                 }
             } else {

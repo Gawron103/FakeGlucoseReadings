@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.glucosereadings.databinding.FragmentSwitchCgmBinding
-import com.example.glucosereadings.data.repository.SensorRepository
 import com.example.glucosereadings.domain.use_case.GetAvailableSensorTypesUseCase
 import com.example.glucosereadings.domain.use_case.GetSensorTypeUseCase
 import com.example.glucosereadings.domain.use_case.SetSensorTypeUseCase
@@ -29,10 +28,10 @@ class SwitchCgmFragment : Fragment() {
         )
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.onGetSensorType()
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +43,8 @@ class SwitchCgmFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.onGetSensorType()
+
         sensorsAdapter = SensorsAdapter(viewModel.getAvailableSensors()) { selected ->
             viewModel.checkIfSwitchCgmShouldBeEnabled(selected)
         }
@@ -68,7 +69,6 @@ class SwitchCgmFragment : Fragment() {
         binding.btnSwitchCgmSwitch.setOnClickListener {
             viewModel.setSensorType(sensorsAdapter.getSelectedSensor())
             findNavController().popBackStack()
-//            Toast.makeText(requireContext(), "Selected sensor: ${sensorsAdapter.getSelectedSensor()}", Toast.LENGTH_SHORT).show()
         }
     }
 }

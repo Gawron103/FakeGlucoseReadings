@@ -1,7 +1,6 @@
 package com.example.glucosereadings.data.model
 
 import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
 class Cgm {

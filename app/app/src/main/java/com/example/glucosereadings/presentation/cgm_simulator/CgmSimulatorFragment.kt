@@ -16,16 +16,6 @@ class CgmSimulatorFragment : Fragment() {
     private var _binding: FragmentCgmSimulatorBinding? = null
     private val binding: FragmentCgmSimulatorBinding get() = _binding!!
 
-//    private val sensorManagementViewModel by activityViewModels<SensorManagementViewModel> {
-//        SensorManagementViewModelFactory(
-//            GetSensorStateUseCase(),
-//            GetSensorTypeUseCase(),
-//            GetSensorEgvUseCase(),
-//            AddSensorUseCase(),
-//            DeleteSensorUseCase()
-//        )
-//    }
-
     private val viewModel by viewModels<CgmSimulatorViewModel> {
         CgmSimulatorViewModelFactory(
             SetSensorEgvLimitUseCase(),
@@ -33,10 +23,10 @@ class CgmSimulatorFragment : Fragment() {
         )
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.onGetSensorState()
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        viewModel.onGetSensorState()
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +38,7 @@ class CgmSimulatorFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.onGetSensorState()
         observeSensorState()
         setupSeekBar()
         setupApplyButton()

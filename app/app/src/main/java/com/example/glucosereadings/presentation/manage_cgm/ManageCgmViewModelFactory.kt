@@ -4,12 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.glucosereadings.domain.use_case.DeleteSensorUseCase
 import com.example.glucosereadings.domain.use_case.GetSensorInfoUseCase
-import com.example.glucosereadings.domain.use_case.GetSensorStateUseCase
-import com.example.glucosereadings.domain.use_case.GetSensorTypeUseCase
 
 class ManageCgmViewModelFactory constructor(
-//    private val getSensorStateUseCase: GetSensorStateUseCase,
-//    private val getSensorTypeUseCase: GetSensorTypeUseCase,
     private val getSensorInfoUseCase: GetSensorInfoUseCase,
     private val deleteSensorUseCase: DeleteSensorUseCase
 ): ViewModelProvider.Factory {
@@ -18,8 +14,6 @@ class ManageCgmViewModelFactory constructor(
         return when {
             modelClass.isAssignableFrom(ManageCgmViewModel::class.java) -> {
                 ManageCgmViewModel(
-//                    getSensorStateUseCase,
-//                    getSensorTypeUseCase,
                     getSensorInfoUseCase,
                     deleteSensorUseCase
                 ) as T

@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.glucosereadings.data.model.SensorType
-import com.example.glucosereadings.data.repository.SensorRepository
 import com.example.glucosereadings.domain.use_case.GetAvailableSensorTypesUseCase
 import com.example.glucosereadings.domain.use_case.GetSensorTypeUseCase
 import com.example.glucosereadings.domain.use_case.SetSensorTypeUseCase
@@ -16,7 +15,7 @@ class SwitchCgmViewModel(
     private val setSensorTypeUseCase: SetSensorTypeUseCase,
     private val getAvailableSensorTypesUseCase: GetAvailableSensorTypesUseCase,
     private val getSensorTypeUseCase: GetSensorTypeUseCase
-    ): ViewModel() {
+): ViewModel() {
 
     private var disposable: Disposable? = null
 
