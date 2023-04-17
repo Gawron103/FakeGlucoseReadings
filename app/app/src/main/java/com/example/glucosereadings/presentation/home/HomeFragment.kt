@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.example.glucosereadings.databinding.FragmentHomeBinding
 import com.example.glucosereadings.domain.use_case.*
@@ -35,8 +36,14 @@ class HomeFragment : Fragment() {
     private fun observeEgvValue() {
         viewModel.sensorEgvLiveData.observe(viewLifecycleOwner) { egv ->
             when (egv) {
-                null -> { binding.tvHomeEgvValue.text = "---" }
-                else -> { binding.tvHomeEgvValue.text = egv.toString() }
+                null -> {
+                    binding.tvHomeEgvValue.text = "---"
+                    binding.tvHomeEgvHint.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.tvHomeEgvValue.text = egv.toString()
+                    binding.tvHomeEgvHint.visibility = View.GONE
+                }
             }
         }
     }
