@@ -1,6 +1,7 @@
 # FakeGlucoseReadings
 
-<img src="img/add_DexcomG6.gif" width="400" /> <img src="img/delete_Sensor.gif" width="400" /> <img src="img/add_Libre2.gif" width="400" />
+|<img src="img/add_DexcomG6.gif" />|<img src="img/delete_Sensor.gif" />|<img src="img/add_Libre2.gif" />|
+|:---:|:---:|:---:|
 
 Fake glucose readings application is a very ( very very) simple clone of the application we are currently working on. In order for the customer to bring the application to market, it has to meet a number of requirements, one of which is to cover it with tests and make sure that all the requirements provided by the customer have been implemented in the right way.
 
