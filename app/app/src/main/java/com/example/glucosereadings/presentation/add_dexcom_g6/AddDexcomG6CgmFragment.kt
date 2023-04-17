@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -53,6 +54,8 @@ class AddDexcomG6CgmFragment : Fragment() {
                 val res = viewModel.addSensor(pin)
                 if (res) {
                     showSensorAddedAlert()
+                } else {
+                    Toast.makeText(requireContext(), "Wrong PIN", Toast.LENGTH_SHORT).show()
                 }
             }
         }

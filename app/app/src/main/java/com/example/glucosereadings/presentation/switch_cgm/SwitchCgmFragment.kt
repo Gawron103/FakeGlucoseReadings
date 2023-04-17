@@ -28,11 +28,6 @@ class SwitchCgmFragment : Fragment() {
         )
     }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,10 +55,6 @@ class SwitchCgmFragment : Fragment() {
         binding.rvSwitchCgmSensors.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = sensorsAdapter
-        }
-
-        binding.btnSwitchCGMCancel.setOnClickListener {
-            findNavController().popBackStack()
         }
 
         binding.btnSwitchCgmSwitch.setOnClickListener {
