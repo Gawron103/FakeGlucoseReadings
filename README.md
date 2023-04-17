@@ -41,7 +41,7 @@ This is an app that connects to an external device (sensor) and with its help di
 
 **Add Dexcom G6 View**
 <p>Req16. When the sensor type is set to Dexcom G6, when you press the add sensor button on the sensor management screen, you should be taken to the screen responsible for adding the Dexcom G6 sensor</p>
-<p>Req17. On the screen for adding a Dexcom G6 type sensor, the user should see information on how they can give sensor</p>
+<p>Req17. On the screen for adding a Dexcom G6 type sensor, the user should see information on how they can add sensor</p>
 <p>Req18. On the screen for adding Dexcom G6 type sensor, the user should be able to enter the transmitter pin code</p>
 <p>Req19. Only the following pin codes should be able to add Dexcom G6 type sensor: 1234, 8888, 4321</p>
 <p>Req20. If the pin code is correct the Dexcom G6 type sensor should be added</p>
@@ -64,7 +64,7 @@ The purpose of this task is to cover the application with tests and verify that 
 - Flow
 - Unit Tests
 
-The client requested that for unit tests JUnit should be used along with MockK (a framework for mocking), while for instrumented and flow tests the Espresso framework should be used. In addition, each test should include a comment indicating what requirement it is testing.
+The client requested that for unit tests JUnit should be used along with MockK (a framework for mocking), while for instrumented and flow tests the Espresso framework should be used. In addition, each test should include annotation indicating what requirement it is testing.
 
 ## Useful links ##
 [MockK](https://mockk.io/)
